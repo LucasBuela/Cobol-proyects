@@ -9,15 +9,15 @@
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
-       01  num1 pic 9(5).
-       01  num2 pic 9(5).
-       01  resultado pic 9(5).
-       01  respuesta pic xxxx.
-       01  calculo pic x(40).
+       01  num1 pic 999.
+       01  num2 pic 999.
+       01  resultado pic -ZZZZ.
+       01  respuesta pic XXXX.
+       01  calculo pic X(40) VALUE SPACE.
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
       *Calculadora con GO TO & PERFORM.
-      
+
             Inicio.
             PERFORM reset-programa.
             DISPLAY "Bienvenidos.¿Desea realizar un calculo? (S/N)"
@@ -29,10 +29,8 @@
                 PERFORM operacion.
 
             reset-programa.
-                MOVE " " TO calculo.
-                MOVE 0 to num1.
-                MOVE 0 to num2.
-                MOVE 0 TO resultado.
+
+                MOVE 0 TO num1 num2 resultado.
 
 
             operacion.
@@ -52,33 +50,33 @@
                     GO TO salida.
 
            sumamos.
-                    DISPLAY "Introduce numero 1: " num1.
+                    DISPLAY "Introduce numero 1: ".
                     ACCEPT num1.
-                    DISPLAY "Introduce numero 2 :" num2.
+                    DISPLAY "Introduce numero 2 :".
                     ACCEPT num2.
                     COMPUTE resultado=num1+num2.
                     DISPLAY "El resultado de la suma es de: " resultado.
                     PERFORM Inicio.
            restamos.
-                    DISPLAY "Introduce numero 1: " num1.
+                    DISPLAY "Introduce numero 1: ".
                     ACCEPT num1.
-                    DISPLAY "Introduce numero 2 :" num2.
+                    DISPLAY "Introduce numero 2 :".
                     ACCEPT num2.
                     COMPUTE resultado=num1 - num2.
                     DISPLAY "El resultado de la resta es de: " resultado.
                     PERFORM Inicio.
            multiplicamos.
-                    DISPLAY "Introduce numero 1: " num1.
+                    DISPLAY "Introduce numero 1: ".
                     ACCEPT num1.
-                    DISPLAY "Introduce numero 2 :" num2.
+                    DISPLAY "Introduce numero 2 :".
                     ACCEPT num2.
                     COMPUTE resultado=num1 * num2.
                     DISPLAY "El resultado de la mult es de: " resultado.
                     PERFORM Inicio.
            dividimos.
-                    DISPLAY "Introduce numero 1: " num1.
+                    DISPLAY "Introduce numero 1: ".
                     ACCEPT num1.
-                    DISPLAY "Introduce numero 2 :" num2.
+                    DISPLAY "Introduce numero 2 :".
                     ACCEPT num2.
                     COMPUTE resultado=num1 / num2.
                     DISPLAY "El resultado de la div es de: " resultado.
