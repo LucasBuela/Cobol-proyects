@@ -20,7 +20,7 @@
 
             Inicio.
             PERFORM reset-programa.
-            DISPLAY "Bienvenidos.¿Desea realizar un calculo? (S/N)"
+            DISPLAY "Bienvenido.¿Desea realizar un calculo? (S/N)"
             ACCEPT respuesta.
             IF respuesta="N" OR respuesta ="n"
                 GO TO  salida.
