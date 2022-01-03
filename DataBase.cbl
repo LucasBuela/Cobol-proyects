@@ -1,5 +1,5 @@
        SELECT OPTIONAL ARCHIVO-CLIENTES
-       ASSIGN TO "D:\Lucas\cursos\Cobol\empleados.dat"
+       ASSIGN TO "empleados.dat"
        ORGANIZATION IS INDEXED
        RECORD KEY IS CLIENTES-ID
        ACCESS MODE IS DYNAMIC.
