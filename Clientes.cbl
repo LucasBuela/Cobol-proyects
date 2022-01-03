@@ -1,7 +1,7 @@
       ******************************************************************
       * Author:Lucas Gustavo Buela
       * Date:05/5/2021
-      * Purpose: Base de datos practica.
+      * Purpose: Crear registros de clientes en la BD.
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -10,35 +10,26 @@
        INPUT-OUTPUT SECTION.
 
        FILE-CONTROL.
-       SELECT OPTIONAL ARCHIVO-CLIENTES
-       ASSIGN TO "empleados.dat"
-       ORGANIZATION SEQUENTIAL.
+       COPY "DataBase.cbl".
 
        DATA DIVISION.
        FILE SECTION.
       *Datos a almacenar de los usuarios:
-       FD  ARCHIVO-CLIENTES.
-           01 CLIENTES-REGISTRO.
-              10 CLIENTES-ID PIC X(6).
-              10 CLIENTES-NOMBRE PIC X(25).
-              10 CLIENTES-APELLIDO PIC X(35).
-              10 CLIENTES-EDAD PIC X(3).
-              10 CLIENTES-TELEFONO PIC X(10).
-              10 CLIENTES-DIRECCION PIC X(35).
+       COPY "Data.cbl".
 
        WORKING-STORAGE SECTION.
 
-       01  IDENTIFICADOR PIC X(32)
+       01  IDENTIFICADOR PIC X(36)
            VALUE "Ingrese ID del nuevo cliente: ".
-       01  NOMBRE PIC X(35)
+       01  NOMBRE PIC X(34)
            VALUE "Ingrese nombre del nuevo cliente: ".
-       01  APELLIDO PIC X(37)
+       01  APELLIDO PIC X(36)
            VALUE "Ingrese apellido del nuevo cliente: ".
-       01  EDAD PIC X(35)
+       01  EDAD PIC X(32)
            VALUE "Ingrese edad del nuevo cliente: ".
-       01  TELEFONO PIC X(37)
+       01  TELEFONO PIC X(36)
            VALUE "Ingrese telefono del nuevo cliente: ".
-       01  DIRECCION PIC X(38)
+       01  DIRECCION PIC X(37)
            VALUE "Ingrese direccion del nuevo cliente: ".
 
        01  SI-NO PIC X.
@@ -57,13 +48,11 @@
             STOP RUN.
 
        APERTURA.
-           OPEN EXTEND ARCHIVO-CLIENTES.
+            OPEN I-O ARCHIVO-CLIENTES.
 
-      *Para cerrar la base de datos:
        CIERRE.
            CLOSE ARCHIVO-CLIENTES.
 
-      *Para escribir registros:
        AGREGAR-REGISTRO.
            MOVE "N" TO ENTRADA.
            PERFORM OBTENER-CAMPOS
@@ -71,7 +60,6 @@
            PERFORM ESCRIBIR-REGISTRO.
            PERFORM REINICIAR.
 
-      *CAMPOS:
        OBTENER-CAMPOS.
            MOVE SPACE TO CLIENTES-REGISTRO.
            DISPLAY IDENTIFICADOR "?".
